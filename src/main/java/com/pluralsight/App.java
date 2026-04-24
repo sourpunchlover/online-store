@@ -22,7 +22,7 @@ public class App {
             System.out.println("\t1) Display Products");
             System.out.println("\t2) Display Cart");
             System.out.println("\t0) Exit");
-            System.out.println("Enter your selection: ");
+            System.out.print("Enter your selection: ");
             int userOption = scanner.nextInt();
             scanner.nextLine();
 
@@ -37,7 +37,7 @@ public class App {
                     break;
                 case 0:
                     //exit system. 0 is a successful exit
-                    System.out.println("Thanks for visiting \uD83D\uDE0A!)");
+                    System.out.println("Thanks for visiting \uD83D\uDE0A!");
                     scanner.close();
                     System.exit(0);
                     break;
@@ -53,9 +53,41 @@ public class App {
     public static void displayProducts(Scanner scanner) {
         HashMap<String, Products> products = loadInventory();
 
-        for (Products p : products.values()) {//views all
-            System.out.printf("%s: $%.2f%n", p.getProductName(), p.getPrice());
+        boolean run = true;
+        while (run) {
+            System.out.println("Select from the following options: ");
+            System.out.println("\t1) View All Products");
+            System.out.println("\t2) Search Products");
+            System.out.println("\t3) Add Product");
+            System.out.println("\t0) Exit");
+            System.out.print("Enter your selection: ");
+            int userOption = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (userOption) {
+                case 1:
+                    for (Products p : products.values()) {//views all
+                        System.out.printf("%s: $%.2f%n", p.getProductName(), p.getPrice());
+                    }
+                    formatSpaces();
+                    break;
+                case 2:
+                    //search p
+                    break;
+                case 3:
+                    //add p
+                    break;
+                case 0:
+                    formatSpaces();
+                    run = false;
+                    break;
+                default:
+                    System.out.println("Incorrect option entered(press Enter to continue)");
+                    scanner.nextLine();
+                    formatSpaces();
+            }
         }
+
 
     }
 
