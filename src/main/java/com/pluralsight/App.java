@@ -17,6 +17,9 @@ public class App {
 
     }
     public static void homeScreen(Scanner scanner) {
+
+        HashMap<String, Products> cart = new HashMap<>();
+
         while (true) {
             System.out.println("Select from the following options: ");
             System.out.println("\t1) Display Products");
@@ -28,11 +31,11 @@ public class App {
 
             switch (userOption) {
                 case 1:
-                    displayProducts(scanner);
+                    displayProducts(scanner,cart);
                     System.out.println("\n\n");
                     break;
                 case 2:
-                    //displayCart();
+                    //displayCart(cart);
                     System.out.println("\n\n");
                     break;
                 case 0:
@@ -50,7 +53,7 @@ public class App {
         }
     }
 
-    public static void displayProducts(Scanner scanner) {
+    public static void displayProducts(Scanner scanner, HashMap<String, Products> cart) {
         HashMap<String, Products> products = loadInventory();
 
         boolean run = true;
@@ -73,18 +76,31 @@ public class App {
                     break;
                 case 2:
                     //searchProducts(scanner);
-                    System.out.println("Search by entering product name exactly as shown from the list above: ");
+                    System.out.println("Enter the product name: ");
                     String userInput = scanner.nextLine();
 
                     for (Products p : products.values()) {
                         if (p.getProductName().toLowerCase().contains(userInput.toLowerCase())) {
-                            System.out.printf("%s: $%.2f%n", p.getProductName(), p.getPrice());
+                            System.out.printf("%s: %s: $%.2f%n", p.getSku(),p.getProductName(), p.getPrice());
                         }
                     }
                     formatSpaces();
                     break;
                 case 3:
                     //addProducts (is gonna be writing to that file)
+                    System.out.print("Enter the sku: ");
+                    String sku = scanner.nextLine();
+                    Products product = products.get(sku);
+
+                    if (product != null) {
+                        cart.put(sku,product);
+                    }
+
+                    if (product == null) {
+                        System.out.println("No Product Found!");
+                    }
+
+
                     break;
                 case 0:
                     formatSpaces();
@@ -128,6 +144,8 @@ public class App {
 
         return products;
     }
+
+    public static void displayCart(Scanner scanner) {}
 
     public static void formatSpaces() {
         System.out.println("\n\n");
