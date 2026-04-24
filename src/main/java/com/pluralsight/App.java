@@ -51,6 +51,9 @@ public class App {
     }
 
     public static void displayProducts(Scanner scanner) {
+
+    }
+    public static HashMap<String, Products> loadInventory() {
         HashMap<String, Products> products = new HashMap<>();
         try {
             BufferedReader buffReader = new BufferedReader(new FileReader("src/main/resources/products.csv"));
@@ -72,12 +75,11 @@ public class App {
             }
 
             buffReader.close();
-
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return products;
     }
 
     public static void formatSpaces() {
