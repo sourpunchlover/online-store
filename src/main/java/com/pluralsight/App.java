@@ -51,8 +51,14 @@ public class App {
     }
 
     public static void displayProducts(Scanner scanner) {
+        HashMap<String, Products> products = loadInventory();
+
+        for (Products p : products.values()) {//views all
+            System.out.printf("%s: $%.2f%n", p.getProductName(), p.getPrice());
+        }
 
     }
+
     public static HashMap<String, Products> loadInventory() {
         HashMap<String, Products> products = new HashMap<>();
         try {
