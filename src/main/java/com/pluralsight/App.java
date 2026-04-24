@@ -15,5 +15,21 @@ public class App {
         System.out.println("Enter you selection: ");
         int userOption = scanner.nextInt();
 
+        switch (userOption){
+            case 1:
+                displayProducts();
+               break;
+            case 2:
+                displayCart();
+               break;
+            case 0:
+                //exit system. 0 is a successful exit
+                System.out.println("Thanks for visiting!)");
+                System.exit(0);
+                break;
+            default:
+                System.out.println("Incorrect option entered");
+        }
+
     }
 }
