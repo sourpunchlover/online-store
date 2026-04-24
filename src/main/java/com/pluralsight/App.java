@@ -1,5 +1,8 @@
 package com.pluralsight;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class App {
@@ -37,9 +40,28 @@ public class App {
                     System.exit(0);
                     break;
                 default:
-            }        System.out.println("Incorrect option entered (press Enter to continue)");
-            scanner.nextLine();
-            System.out.println("\n\n");
+                    System.out.println("Incorrect option entered (press Enter to continue)");
+                    scanner.nextLine();
+                    System.out.println("\n\n");
+
+            }
         }
     }
+
+    public static void displayProducts(Scanner scanner) {
+        try {
+            BufferedReader buffReader = new BufferedReader(new FileReader("src/main/resources/products.csv"));
+
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void formatSpaces() {
+        System.out.println("\n\n");
+    }
+
+
 }
