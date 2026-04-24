@@ -28,7 +28,7 @@ public class App {
 
             switch (userOption) {
                 case 1:
-                    //displayProducts();
+                    displayProducts(scanner);
                     System.out.println("\n\n");
                     break;
                 case 2:
@@ -72,10 +72,19 @@ public class App {
                     formatSpaces();
                     break;
                 case 2:
-                    //search p
+                    //searchProducts(scanner);
+                    System.out.println("Search by entering product name exactly as shown from the list above: ");
+                    String userInput = scanner.nextLine();
+
+                    for (Products p : products.values()) {
+                        if (p.getProductName().toLowerCase().contains(userInput.toLowerCase())) {
+                            System.out.printf("%s: $%.2f%n", p.getProductName(), p.getPrice());
+                        }
+                    }
+                    formatSpaces();
                     break;
                 case 3:
-                    //add p
+                    //addProducts (is gonna be writing to that file)
                     break;
                 case 0:
                     formatSpaces();
